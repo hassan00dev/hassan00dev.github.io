@@ -12,29 +12,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 </head>
 <style>
+    :root {
+        --primary-color: #123;
+        --secondary-color: #4a83af;
+        --background-color: #fbfdff;
+        --content-bg: #e6e3e3;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         font-family: Lato, sans-serif;
-        background: #fbfdff;
+        background: var(--background-color);
         max-width: 1200px;
         margin: 3% auto;
         padding: 15px;
+        overflow-x: hidden;
     }
 
     #title {
         font-family: Lato, sans-serif;
-        font-size: 4rem;
-        color: #123;
+        font-size: 2.5rem;
+        color: var(--primary-color);
         font-weight: 500;
-        letter-spacing: -1.5px;
+        letter-spacing: -1px;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
     }
 
     h1 {
         font-family: Lato, sans-serif;
         font-weight: 300;
-        margin-top: 15px;
-        color: #4a83af;
-        font-size: 2rem;
-        padding-left: 0.25rem;
+        margin-top: 0;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        line-height: 1.4;
     }
 
     h3 {
@@ -44,47 +58,53 @@
         text-shadow: 1px 1px 1px #dbefff;
     }
 
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
     #left {
-        float: left;
-        max-width: calc(86% - 216px);
+        width: 100%;
+        order: 2;
     }
 
     #right {
         float: right;
-        width: 20%;
         text-align: center;
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    #me {
+        width: 100%;
+        height: auto;
     }
 
     #body {
-        float: left;
-        background: #e6e3e3;
-        border-radius: 60px;
-        position: relative;
+        background: var(--content-bg);
+        border-radius: 30px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
         width: 100%;
-        top: 20px;
-        left: -3%;
-        padding: 1.4rem 5% 2rem;
-        margin-bottom: 3rem;
     }
 
     div,
     p,
     ul,
     li {
-        line-height: 28px;
-        font-size: 1.2rem;
+        line-height: 1.6;
+        font-size: 1rem;
         font-weight: 300;
         letter-spacing: 0.5px;
     }
 
     li {
-        line-height: 34px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     li ul li {
-        font-size: 1rem;
-        margin-bottom: -5px;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
     }
 
     hr {
@@ -94,203 +114,170 @@
         margin: 40px 0;
     }
 
+    #social {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 1rem 0;
+    }
+
     #social a {
-        margin: -5px 5px;
-        position: relative;
-        top: 4px !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     a {
-        color: #123;
+        color: var(--primary-color);
         border-bottom: 1px solid rgba(11, 22, 33, 0.2);
+        text-decoration: none;
     }
 
-    @media all and (max-width:800px) {
+    a:hover {
+        border-bottom: 1px solid var(--primary-color);
+    }
 
-        body {
-            overflow-x: hidden;
+    /* Tablet styles */
+    @media all and (min-width: 768px) {
+        .container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         #left {
-            max-width: calc(116% - 216px);
-        }
-
-        img {
-            max-width: 230%;
-        }
-
-    }
-
-    @media all and (max-width:700px) {
-
-        body,
-        html {
-            overflow-x: hidden;
-        }
-
-        body {
-            padding-top: 3%;
-        }
-
-        #title {
-            line-height: 4.3rem;
-            position: relative;
-            top: -4px;
-            display: block;
-            padding-left: 5px;
-        }
-
-        h1 {
-            line-height: 2.6rem;
-            padding-left: 4px;
-            display: block;
-            margin-left: 2px;
-            margin-top: 11px !important;
-        }
-
-        #left {
-            max-width: calc(136% - 216px);
-            margin-left: -10px;
+            width: 70%;
+            order: 1;
         }
 
         #right {
-            position: static;
-            right: 19%;
-            display: block;
-            margin-left: -300px;
+            width: 25%;
+            order: 2;
+            margin-bottom: 0;
         }
 
-        #social a {
-            margin: 5px 5px 10px;
-            left: 0px;
+        #title {
+            font-size: 3.5rem;
         }
 
-        #right a i.fa-whatsapp {
-            top: 1px !important;
+        h1 {
+            font-size: 1.8rem;
         }
 
-        #right a i.fa-envelope-o {
-            top: 2px !important;
-            left: 1px !important;
+        div,
+        p,
+        ul,
+        li {
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Desktop styles */
+    @media all and (min-width: 992px) {
+        #title {
+            font-size: 4rem;
         }
 
-        #me {
-            max-width: 190%;
-            margin-bottom: -60px;
-            margin-top: -10px;
-            margin-left: -30px;
+        h1 {
+            font-size: 2rem;
         }
 
         #body {
-            margin: -20px 0.5rem 3rem;
-            padding: 0 0.5rem 1rem 0.75rem;
-            min-width: 135%;
+            border-radius: 60px;
+            padding: 1.4rem 2rem 2rem;
         }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        #social {
-            padding-bottom: 10px;
-        }
-
-        #lnk,
-        #fnl {
-            min-width: 130%;
-            padding-left: 5px;
-        }
-
     }
 </style>
 
 <body>
-    <div id="left">
-        <span id="title">Muhammad Hassan</span>
-        <h1>Software Engineer in Kuala Lumpur, Malaysia</h1>
-        <p style="padding-left:0.35rem; margin:-5px 0 -15px" id="social">
-            Contact me &nbsp; -
-            <a href="https://wa.me/923020647861" target="_blank"
-                style="position:relative; top:10px; background:#fff; display:inline-block; border-radius:100px; width:40px; height:40px; text-align:center; padding:9px;">
-                <i class="fa fa-whatsapp fa-2x"
-                    style="color:#25D366; text-shadow:1px 1px 3px #fff; position:relative; left:1px; top:1px;"></i>
-            </a>
-            <a href="tel:+923107692915" target="_blank"
-                style="position:relative; top:10px; background:#fff; display:inline-block; border-radius:100px; width:40px; height:40px; text-align:center; padding:9px;">
-                <i class="fa fa-phone fa-2x"
-                    style="color:#4a83af; text-shadow:1px 1px 3px #fff; position:relative; left:1px; top:1px;"></i>
-            </a>
-            <a href="https://linkedin.com/in/hassan00dev" target="_blank"
-                style="position:relative; top:10px; background:#fff; display:inline-block; border-radius:100px; width:40px; height:40px; text-align:center; padding:9px;">
-                <i class="fa fa-linkedin fa-2x"
-                    style="color:#0072b1 ; text-shadow:1px 1px 3px #fff; position:relative; left:1px; top:1px;"></i>
-            </a>
-            <a href="mailto:muhammadhassan00dev@gmail.com" target="_blank"
-                style="position:relative; top:10px; background:#fff; display:inline-block; border-radius:100px; width:40px; height:40px; text-align:center; padding:9px;">
-                <i class="fa fa-envelope-o fa-2x"
-                    style="color:#777; text-shadow:1px 1px 3px #fff; position:relative; left:0px; top:-1px;"></i>
-            </a>
-            <a href="https://github.com/hassan00dev" target="_blank"
-                style="position:relative; top:10px; background:#fff; display:inline-block; border-radius:100px; width:40px; height:40px; text-align:center; padding:9px;">
-                <i class="fa fa-github fa-2x"
-                    style="text-shadow:1px 1px 3px #fff; position:relative; left:0px; top:-1px;"></i>
-            </a>
-        </p>
-        <p style="padding-left:0.35rem; margin-bottom:0;" id="lnk">
-            Founder @<a href="" target="_blank" style="text-decoration:none">Prismatic
-                Insight, Software development agency in 34-35 Hatton Garden, Holborn, London EC1N 8DX</a>
-        </p>
-        <br />
-        <div id="body">
-            <p>If you're looking for software that integrates modern AI automation, simple one-page websites,
-                high-traffic ecommerce platforms, SaaS systems, or mobile applications for iOS/Android — I can help.</p>
-            <p>Since building software in 2020, I specialise in software reliability, scalability, optimising
-                performance, and maintaining high-performance systems with enterprise-level architecture.</p>
-            <p>I also have many years of experience with SEO, UX and graphic/web design.</p>
-            <ul>
-                <li>Go / Golang (High-performance systems, APIs, Microservices)
-                    <ul>
-                        <li>Gin, CLI, Server-Side, Goroutines, Concurrent Tasks</li>
-                    </ul>
-                </li>
-                <li>Python (Microservices, Automation, AI Integrations)
-                    <ul>
-                        <li>Flask, FastAPI, Swagger, Real-Time Handling, Big Data</li>
-                    </ul>
-                </li>
-                <li>Server Management & DevOps
-                    <ul>
-                        <li>Linux / RHEL / CentOS etc., AWS, Google Cloud, IBM Cloud</li>
-                    </ul>
-                </li>
-                <li>JavaScript / TypeScript (Front-end & Full-stack Development)
-                    <ul>
-                        <li>React, Node.js, Vue.js, Angular, jQuery</li>
-                    </ul>
-                </li>
-                <li>Development Environment
-                    <ul>
-                        <li>Docker, Prometheus, CI/CD Pipeline, Confluence, Jenkins</li>
-                    </ul>
-                </li>
-                <li>Flutter
-                    <ul>
-                        <li>Android, IOS, Web, MacOS, Windows, Linux</li>
-                    </ul>
-                </li>
-                <li>PHP (Back-end Development)
-                    <ul>
-                        <li>Laravel, WordPress, CakePHP, Symfony, CodeIgniter</li>
-                    </ul>
-                </li>
-            </ul>
+    <div class="container">
+        <div id="left">
+            <span id="title">Muhammad Hassan</span>
+            <h1>Software Engineer in Kuala Lumpur, Malaysia</h1>
+
+            <p id="social">
+                <a href="https://wa.me/923020647861" target="_blank">
+                    <i class="fa fa-whatsapp fa-lg" style="color:#25D366;"></i>
+                </a>
+                <a href="tel:+923107692915" target="_blank">
+                    <i class="fa fa-phone fa-lg" style="color:#4a83af;"></i>
+                </a>
+                <a href="https://linkedin.com/in/hassan00dev" target="_blank">
+                    <i class="fa fa-linkedin fa-lg" style="color:#0072b1;"></i>
+                </a>
+                <a href="mailto:muhammadhassan00dev@gmail.com" target="_blank">
+                    <i class="fa fa-envelope-o fa-lg" style="color:#777;"></i>
+                </a>
+                <a href="https://github.com/hassan00dev" target="_blank">
+                    <i class="fa fa-github fa-lg"></i>
+                </a>
+            </p>
+
+            <p id="lnk">
+                Founder @<a href="" target="_blank">Prismatic Insight, Software development agency in 34-35 Hatton
+                    Garden, Holborn, London EC1N 8DX</a>
+            </p>
+
+            <div id="body">
+                <p>If you're looking for software that integrates modern AI automation, simple one-page websites,
+                    high-traffic ecommerce platforms, SaaS systems, or mobile applications for iOS/Android — I can help.
+                </p>
+                <p>Since building software in 2020, I specialise in software reliability, scalability, optimising
+                    performance, and maintaining high-performance systems with enterprise-level architecture.</p>
+                <p>I also have many years of experience with SEO, UX and graphic/web design.</p>
+                <ul>
+                    <li>Go / Golang (High-performance systems, APIs, Microservices)
+                        <ul>
+                            <li>Gin, CLI, Server-Side, Goroutines, Concurrent Tasks</li>
+                        </ul>
+                    </li>
+                    <li>Python (Microservices, Automation, AI Integrations)
+                        <ul>
+                            <li>Flask, FastAPI, Swagger, Real-Time Handling, Big Data</li>
+                        </ul>
+                    </li>
+                    <li>Server Management & DevOps
+                        <ul>
+                            <li>Linux / RHEL / CentOS etc., AWS, Google Cloud, IBM Cloud</li>
+                        </ul>
+                    </li>
+                    <li>JavaScript / TypeScript (Front-end & Full-stack Development)
+                        <ul>
+                            <li>React, Node.js, Vue.js, Angular, jQuery</li>
+                        </ul>
+                    </li>
+                    <li>Development Environment
+                        <ul>
+                            <li>Docker, Prometheus, CI/CD Pipeline, Confluence, Jenkins</li>
+                        </ul>
+                    </li>
+                    <li>Flutter
+                        <ul>
+                            <li>Android, IOS, Web, MacOS, Windows, Linux</li>
+                        </ul>
+                    </li>
+                    <li>PHP (Back-end Development)
+                        <ul>
+                            <li>Laravel, WordPress, CakePHP, Symfony, CodeIgniter</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <p id="fnl">Scaling up? Software a bit slow, or need AI automation or something new? <br><br>
+                <a href="mailto:muhammadhassan00dev@gmail.com" target="_blank">Contact me</a> today!
+            </p>
         </div>
-        <p id="fnl">Scaling up? Software a bit slow, or need AI automation or something new? <br /><br /><a
-                style="color:#123;" href="mailto:muhammadhassan00dev@gmail.com" target="_blank">Contact me</a> today!
-        </p>
-    </div>
-    <div id="right">
-        <img src="me.png" id="me" />
+
+        <div id="right">
+            <img src="me.png" id="me" alt="Muhammad Hassan" />
+        </div>
     </div>
 </body>
 
