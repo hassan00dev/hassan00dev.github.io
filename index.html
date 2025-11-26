@@ -40,6 +40,8 @@
         letter-spacing: -1px;
         line-height: 1.2;
         margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
     }
 
     h1 {
@@ -49,6 +51,8 @@
         color: var(--secondary-color);
         font-size: 1.5rem;
         line-height: 1.4;
+        position: relative;
+        z-index: 1;
     }
 
     h3 {
@@ -61,6 +65,7 @@
     .container {
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     #left {
@@ -73,6 +78,7 @@
         text-align: center;
         order: 1;
         margin-bottom: 2rem;
+        position: relative;
     }
 
     #me {
@@ -143,6 +149,46 @@
         border-bottom: 1px solid var(--primary-color);
     }
 
+    /* Mobile styles */
+    @media all and (max-width: 767px) {
+        .container {
+            flex-direction: column;
+            position: relative;
+        }
+
+        #left {
+            width: 100%;
+            order: 2;
+        }
+
+        #right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            order: 1;
+            margin-bottom: 0;
+            z-index: 0;
+        }
+
+        #me {
+            width: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        #title {
+            font-size: 2.2rem;
+            padding-right: 130px;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            padding-right: 130px;
+        }
+    }
+
     /* Tablet styles */
     @media all and (min-width: 768px) {
         .container {
@@ -160,14 +206,22 @@
             width: 25%;
             order: 2;
             margin-bottom: 0;
+            position: static;
+        }
+
+        #me {
+            border-radius: 0;
+            opacity: 1;
         }
 
         #title {
             font-size: 3.5rem;
+            padding-right: 0;
         }
 
         h1 {
             font-size: 1.8rem;
+            padding-right: 0;
         }
 
         div,
@@ -232,13 +286,15 @@
                     performance, and maintaining high-performance systems with enterprise-level architecture.</p>
                 <p>I also have many years of experience with SEO, UX and graphic/web design.</p>
                 <ul>
-                    <li>Go / Golang (High-performance systems, APIs, Microservices)
+                    <li>Go / Golang
                         <ul>
+                            <li>High-performance systems, APIs, Microservices</li>
                             <li>Gin, CLI, Server-Side, Goroutines, Concurrent Tasks</li>
                         </ul>
                     </li>
-                    <li>Python (Microservices, Automation, AI Integrations)
+                    <li>Python
                         <ul>
+                            <li>Microservices, Automation, AI Integrations</li>
                             <li>Flask, FastAPI, Swagger, Real-Time Handling, Big Data</li>
                         </ul>
                     </li>
@@ -247,8 +303,9 @@
                             <li>Linux / RHEL / CentOS etc., AWS, Google Cloud, IBM Cloud</li>
                         </ul>
                     </li>
-                    <li>JavaScript / TypeScript (Front-end & Full-stack Development)
+                    <li>JavaScript / TypeScript
                         <ul>
+                            <li>Front-end & Full-stack Development</li>
                             <li>React, Node.js, Vue.js, Angular, jQuery</li>
                         </ul>
                     </li>
